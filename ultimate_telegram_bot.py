@@ -7,7 +7,14 @@ import time
 import threading
 
 TOKEN = os.getenv('BOT_TOKEN')
-ADMIN_ID = int(os.getenv('ADMIN_ID'))
+ADMIN_ID = os.getenv('ADMIN_ID')
+
+# ✅ Validate environment variables before running
+if not TOKEN:
+    raise ValueError("❌ BOT_TOKEN is not set in environment variables.")
+if not ADMIN_ID:
+    raise ValueError("❌ ADMIN_ID is not set in environment variables.")
+ADMIN_ID = int(ADMIN_ID)
 
 bot = telebot.TeleBot(TOKEN)
 
